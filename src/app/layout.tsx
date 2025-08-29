@@ -9,6 +9,7 @@ import "./layout.scss";
 import {  ConfigProvider } from "antd";
 import { themeConfig } from "@/components/ThemeConfig";
 import NextAuthProvider from "@/components/NextAuthProvider";
+import { SWRProvider } from "@/components/SWRProvider";
 import Script from "next/script";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -63,9 +64,11 @@ export default function RootLayout({
 
         <AntdRegistry>
           <ConfigProvider theme={themeConfig}>
-            <NextAuthProvider>
-              <MainLayout>{children}</MainLayout>
-            </NextAuthProvider>
+            <SWRProvider>
+              <NextAuthProvider>
+                <MainLayout>{children}</MainLayout>
+              </NextAuthProvider>
+            </SWRProvider>
           </ConfigProvider>
         </AntdRegistry>
       </body>

@@ -13,3 +13,6 @@ export interface ICategory {
   id: number;
   name: string;
 }
+
+// Export menu types
+export * from './menu';

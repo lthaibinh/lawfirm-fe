@@ -44,6 +44,10 @@ const menuItems: { key: string; label: React.ReactNode }[] = [
     key: "/discussion",
     label: <Link href={"/practice"}>Thảo luận</Link>,
   },
+  {
+    key: "/admin",
+    label: <Link href={"/admin"}>Admin</Link>,
+  },
 ];
 
 export const MyHeader = () => {
