@@ -1,3 +1,5 @@
+'use client';
+
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';

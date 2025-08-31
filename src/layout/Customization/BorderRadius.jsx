@@ -1,3 +1,5 @@
+'use client';
+
 // material-ui
 import Grid from '@mui/material/Grid';
 import Slider from '@mui/material/Slider';

@@ -33,7 +33,7 @@ const dashboard: MenuGroup = {
       id: 'default',
       title: 'Dashboard',
       type: 'item',
-      url: '/dashboard/default',
+      url: '/admin/dashboard',
       icon: icons.IconDashboard,
       breadcrumbs: false
     }

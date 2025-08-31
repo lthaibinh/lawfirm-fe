@@ -4,7 +4,7 @@ import { UserOutlined } from "@ant-design/icons";
 import { axiosInstance } from "@/utils/axios";
 import { axiosObservable } from "@/utils/axiosObservable";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export const LoginModal = () => {
   const [visible, setVisible] = useState(false);

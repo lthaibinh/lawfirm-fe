@@ -1,3 +1,5 @@
+'use client';
+
 // material-ui
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Grid from '@mui/material/Grid';

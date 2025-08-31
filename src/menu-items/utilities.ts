@@ -48,15 +48,15 @@ const management: MenuGroup = {
           id: 'create-account',
           title: 'create',
           type: 'item',
-          url: '/pages/login',
-          target: true
+          url: '/admin/account/create',
+          target: false
         },
         {
           id: 'list-account',
           title: 'list',
           type: 'item',
-          url: '/pages/login',
-          target: true
+          url: '/admin/account/list',
+          target: false
         },
       ]
     },
@@ -70,15 +70,15 @@ const management: MenuGroup = {
           id: 'create-post',
           title: 'create',
           type: 'item',
-          url: '/pages/login',
-          target: true
+          url: '/admin/post/create',
+          target: false
         },
         {
           id: 'list-post',
           title: 'list',
           type: 'item',
-          url: '/pages/login',
-          target: true
+          url: '/admin/post/list',
+          target: false
         },
       ]
     }

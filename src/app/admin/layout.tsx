@@ -19,6 +19,7 @@ import Loader from '@/ui-component/Loader';
 import Breadcrumbs from '@/ui-component/extended/Breadcrumbs';
 
 import useConfig from '@/hooks/useConfig';
+import { handlerDrawerOpen, useGetMenuMaster } from '@/api/menu';
 
 // ==============================|| ADMIN LAYOUT ||============================== //
 
@@ -30,15 +31,19 @@ export default function AdminLayout({
   const theme = useTheme();
   const downMD = useMediaQuery(theme.breakpoints.down('md'));
 
-  const { borderRadius, miniDrawer } = useConfig();
-  const drawerOpen = true; // Simplified for Next.js
+  const { borderRadius } = useConfig();
+  const { menuMaster, menuMasterLoading } = useGetMenuMaster();
+  const drawerOpen = menuMaster?.isDashboardDrawerOpened;
 
   useEffect(() => {
-    // Handle drawer state for mobile
-    if (downMD) {
-      // Close drawer on mobile
-    }
+    handlerDrawerOpen(true);
+  }, []);
+
+  useEffect(() => {
+    downMD && handlerDrawerOpen(false);
   }, [downMD]);
+
+  if (menuMasterLoading) return <Loader />;
 
   return (
     <BerryConfigProvider>
@@ -58,7 +63,16 @@ export default function AdminLayout({
           <MainContentStyled {...{ borderRadius, open: drawerOpen }}>
             <Box sx={{ ...{ px: { xs: 0 } }, minHeight: 'calc(100vh - 128px)', display: 'flex', flexDirection: 'column' }}>
               {/* breadcrumb */}
-              <Breadcrumbs />
+              <Breadcrumbs 
+                card={false}
+                heading=""
+                icons={false}
+                links={[]}
+                maxItems={8}
+                title={false}
+                titleBottom={false}
+                sx={{}}
+              />
               {children}
               <Footer />
             </Box>

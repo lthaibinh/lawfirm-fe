@@ -1,7 +1,9 @@
+'use client';
+
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -45,6 +47,7 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
 
   const pathname = usePathname();
   const { borderRadius } = useConfig();
+  const router = useRouter();
 
   const { menuMaster } = useGetMenuMaster();
   const drawerOpen = menuMaster?.isDashboardDrawerOpened;
@@ -70,16 +73,20 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
     <FiberManualRecordIcon sx={{ width: isSelected ? 8 : 6, height: isSelected ? 8 : 6 }} fontSize={level > 0 ? 'inherit' : 'medium'} />
   );
 
-  let itemTarget = '_self';
-  if (item.target) {
-    itemTarget = '_blank';
-  }
-
-  const itemHandler = () => {
+  const itemHandler = (item) => {
     if (downMD) handlerDrawerOpen(false);
 
     if (isParents && setSelectedID) {
       setSelectedID();
+    }
+    
+    // Handle navigation based on item properties
+    if (item.target === '_blank' && item.url) {
+      // Open in new tab for external links
+      window.open(item.url, '_blank');
+    } else if (item.url) {
+      // Use router push for internal navigation
+      router.push(item.url);
     }
   };
 
@@ -88,9 +95,6 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
   return (
     <>
       <ListItemButton
-        component={Link}
-        href={item.url}
-        target={itemTarget}
         disabled={item.disabled}
         disableRipple={!drawerOpen}
         sx={{
@@ -127,7 +131,7 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
           })
         }}
         selected={isSelected}
-        onClick={() => itemHandler()}
+        onClick={() => itemHandler(item)}
       >
         <ButtonBase aria-label="theme-icon" sx={{ borderRadius: `${borderRadius}px` }} disableRipple={drawerOpen}>
           <ListItemIcon
