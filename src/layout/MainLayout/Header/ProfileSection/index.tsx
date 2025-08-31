@@ -36,36 +36,36 @@ import { IconLogout, IconSearch, IconSettings, IconUser } from '@tabler/icons-re
 
 // ==============================|| PROFILE MENU ||============================== //
 
-export default function ProfileSection() {
+export default function ProfileSection(): JSX.Element {
   const theme = useTheme();
   const { borderRadius } = useConfig();
-  const [sdm, setSdm] = useState(true);
-  const [value, setValue] = useState('');
-  const [notification, setNotification] = useState(false);
-  const [selectedIndex] = useState(-1);
-  const [open, setOpen] = useState(false);
+  const [sdm, setSdm] = useState<boolean>(true);
+  const [value, setValue] = useState<string>('');
+  const [notification, setNotification] = useState<boolean>(false);
+  const [selectedIndex] = useState<number>(-1);
+  const [open, setOpen] = useState<boolean>(false);
 
   /**
    * anchorRef is used on different components and specifying one type leads to other components throwing an error
    * */
-  const anchorRef = useRef(null);
+  const anchorRef = useRef<HTMLDivElement>(null);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
-  const handleClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+  const handleClose = (event: Event | TouchEvent) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target as Node)) {
       return;
     }
 
     setOpen(false);
   };
 
-  const prevOpen = useRef(open);
+  const prevOpen = useRef<boolean>(open);
   useEffect(() => {
     if (prevOpen.current === true && open === false) {
-      anchorRef.current.focus();
+      anchorRef.current?.focus();
     }
 
     prevOpen.current = open;
@@ -127,7 +127,7 @@ export default function ProfileSection() {
             <Transitions in={open} {...TransitionProps}>
               <Paper>
                 {open && (
-                  <MainCard border={false} elevation={16} content={false} boxShadow shadow={theme.shadows[16]}>
+                  <MainCard border={false} elevation={16} content={false} boxShadow={theme.shadows[16]}>
                     <Box sx={{ p: 2, pb: 0 }}>
                       <Stack>
                         <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>

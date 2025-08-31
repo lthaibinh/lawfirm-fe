@@ -1,6 +1,5 @@
 'use client';
 
-import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
@@ -26,7 +25,7 @@ import useConfig from '@/hooks/useConfig';
 import { useGetMenuMaster } from '@/api/menu';
 
 // Helper function to match paths (replacement for react-router-dom's matchPath)
-const matchPath = ({ path, end = false }, currentPath) => {
+const matchPath = ({ path, end = false }: { path: string; end?: boolean }, currentPath: string): boolean => {
   if (!path) return false;
   const pathSegments = path.split('/').filter(Boolean);
   const currentSegments = currentPath.split('/').filter(Boolean);
@@ -47,19 +46,25 @@ const matchPath = ({ path, end = false }, currentPath) => {
 import { IconChevronDown, IconChevronRight, IconChevronUp } from '@tabler/icons-react';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
-export default function NavCollapse({ menu, level, parentId }) {
+interface NavCollapseProps {
+  menu: any;
+  level: number;
+  parentId: string;
+}
+
+export default function NavCollapse({ menu, level, parentId }: NavCollapseProps): JSX.Element {
   const theme = useTheme();
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   const { borderRadius } = useConfig();
   const { menuMaster } = useGetMenuMaster();
   const drawerOpen = menuMaster?.isDashboardDrawerOpened;
 
-  const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState(null);
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [open, setOpen] = useState<boolean>(false);
+  const [selected, setSelected] = useState<string | null>(null);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
-  const handleClickMini = (event) => {
+  const handleClickMini = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(null);
     if (drawerOpen) {
       setOpen(!open);
@@ -83,7 +88,7 @@ export default function NavCollapse({ menu, level, parentId }) {
 
   const pathname = usePathname();
 
-  const checkOpenForParent = (child, id) => {
+  const checkOpenForParent = (child: any[], id: string) => {
     child.forEach((item) => {
       if (item.url === pathname) {
         setOpen(true);
@@ -97,7 +102,7 @@ export default function NavCollapse({ menu, level, parentId }) {
     setOpen(false);
     openMini ? setAnchorEl(null) : setSelected(null);
     if (menu.children) {
-      menu.children.forEach((item) => {
+      menu.children.forEach((item: any) => {
         if (item.children?.length) {
           checkOpenForParent(item.children, menu.id);
         }
@@ -114,7 +119,7 @@ export default function NavCollapse({ menu, level, parentId }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname, menu.children]);
 
-  const [hoverStatus, setHover] = useState(false);
+  const [hoverStatus, setHover] = useState<boolean>(false);
 
   const compareSize = () => {
     const compare = ref.current && ref.current.scrollWidth > ref.current.clientWidth;
@@ -136,7 +141,7 @@ export default function NavCollapse({ menu, level, parentId }) {
   }, [pathname, menu]);
 
   // menu collapse & item
-  const menus = menu.children?.map((item) => {
+  const menus = menu.children?.map((item: any) => {
     switch (item.type) {
       case 'collapse':
         return <NavCollapse key={item.id} menu={item} level={level + 1} parentId={parentId} />;
@@ -334,5 +339,3 @@ export default function NavCollapse({ menu, level, parentId }) {
     </>
   );
 }
-
-NavCollapse.propTypes = { menu: PropTypes.any, level: PropTypes.number, parentId: PropTypes.string };

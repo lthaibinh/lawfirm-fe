@@ -15,17 +15,17 @@ import { useGetMenuMaster } from '@/api/menu';
 
 // ==============================|| SIDEBAR MENU LIST ||============================== //
 
-function MenuList() {
+function MenuList(): JSX.Element {
   const { menuMaster } = useGetMenuMaster();
   const drawerOpen = menuMaster?.isDashboardDrawerOpened;
 
-  const [selectedID, setSelectedID] = useState('');
+  const [selectedID, setSelectedID] = useState<string>('');
 
   const lastItem = null;
 
   let lastItemIndex = menuItems.items.length - 1;
-  let remItems = [];
-  let lastItemId;
+  let remItems: any[] = [];
+  let lastItemId: string | undefined;
 
   if (lastItem && lastItem < menuItems.items.length) {
     lastItemId = menuItems.items[lastItem - 1].id;

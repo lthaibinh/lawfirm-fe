@@ -1,6 +1,5 @@
 'use client';
 
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 // material-ui
@@ -22,7 +21,13 @@ import Transitions from '@/ui-component/extended/Transitions';
 // assets
 import { IconAdjustmentsHorizontal, IconSearch, IconX } from '@tabler/icons-react';
 
-function HeaderAvatarComponent({ children, ref, ...others }) {
+interface HeaderAvatarComponentProps {
+  children: React.ReactNode;
+  ref?: React.Ref<HTMLDivElement>;
+  [key: string]: any;
+}
+
+function HeaderAvatarComponent({ children, ref, ...others }: HeaderAvatarComponentProps): JSX.Element {
   const theme = useTheme();
 
   return (
@@ -50,7 +55,13 @@ const HeaderAvatar = HeaderAvatarComponent;
 
 // ==============================|| SEARCH INPUT - MOBILE||============================== //
 
-function MobileSearch({ value, setValue, popupState }) {
+interface MobileSearchProps {
+  value: string;
+  setValue: (value: string) => void;
+  popupState: any;
+}
+
+function MobileSearch({ value, setValue, popupState }: MobileSearchProps): JSX.Element {
   const theme = useTheme();
 
   return (
@@ -98,8 +109,8 @@ function MobileSearch({ value, setValue, popupState }) {
 
 // ==============================|| SEARCH INPUT ||============================== //
 
-export default function SearchSection() {
-  const [value, setValue] = useState('');
+export default function SearchSection(): JSX.Element {
+  const [value, setValue] = useState<string>('');
 
   return (
     <>
@@ -163,7 +174,3 @@ export default function SearchSection() {
     </>
   );
 }
-
-HeaderAvatarComponent.propTypes = { children: PropTypes.node, others: PropTypes.any };
-
-MobileSearch.propTypes = { value: PropTypes.string, setValue: PropTypes.func, popupState: PropTypes.any };

@@ -12,7 +12,7 @@ import AnimateButton from '@/ui-component/extended/AnimateButton';
 
 // ==============================|| PROFILE MENU - UPGRADE PLAN CARD ||============================== //
 
-export default function UpgradePlanCard() {
+export default function UpgradePlanCard(): JSX.Element {
   const cardSX = {
     content: '""',
     position: 'absolute',

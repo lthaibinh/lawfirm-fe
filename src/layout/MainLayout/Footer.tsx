@@ -5,7 +5,7 @@ import MuiLink from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
-export default function Footer() {
+export default function Footer(): JSX.Element {
   return (
     <Stack
       direction="row"

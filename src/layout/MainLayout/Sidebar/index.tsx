@@ -24,7 +24,7 @@ import { handlerDrawerOpen, useGetMenuMaster } from '@/api/menu';
 
 // ==============================|| SIDEBAR DRAWER ||============================== //
 
-function Sidebar() {
+function Sidebar(): JSX.Element {
   const downMD = useMediaQuery((theme) => theme.breakpoints.down('md'));
 
   const { menuMaster } = useGetMenuMaster();

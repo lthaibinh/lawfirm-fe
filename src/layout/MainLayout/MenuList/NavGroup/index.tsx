@@ -1,6 +1,5 @@
 'use client';
 
-import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
@@ -18,7 +17,7 @@ import NavItem from '../NavItem';
 import { useGetMenuMaster } from '@/api/menu';
 
 // Helper function to match paths (replacement for react-router-dom's matchPath)
-const matchPath = ({ path, end = false }, currentPath) => {
+const matchPath = ({ path, end = false }: { path: string; end?: boolean }, currentPath: string): boolean => {
   if (!path) return false;
   const pathSegments = path.split('/').filter(Boolean);
   const currentSegments = currentPath.split('/').filter(Boolean);
@@ -35,14 +34,22 @@ const matchPath = ({ path, end = false }, currentPath) => {
 
 // ==============================|| SIDEBAR MENU LIST GROUP ||============================== //
 
-export default function NavGroup({ item, lastItem, remItems, lastItemId, setSelectedID }) {
+interface NavGroupProps {
+  item: any;
+  lastItem?: number | null;
+  remItems?: any[];
+  lastItemId?: string;
+  setSelectedID: (id: string) => void;
+}
+
+export default function NavGroup({ item, lastItem, remItems, lastItemId, setSelectedID }: NavGroupProps): JSX.Element {
   const theme = useTheme();
   const pathname = usePathname();
 
   const { menuMaster } = useGetMenuMaster();
   const drawerOpen = menuMaster?.isDashboardDrawerOpened;
 
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [currentItem, setCurrentItem] = useState(item);
 
   const openMini = Boolean(anchorEl);
@@ -51,7 +58,7 @@ export default function NavGroup({ item, lastItem, remItems, lastItemId, setSele
     if (lastItem) {
       if (item.id === lastItemId) {
         const localItem = { ...item };
-        const elements = remItems.map((ele) => ele.elements);
+        const elements = remItems?.map((ele) => ele.elements) || [];
         localItem.children = elements.flat(1);
         setCurrentItem(localItem);
       } else {
@@ -60,7 +67,7 @@ export default function NavGroup({ item, lastItem, remItems, lastItemId, setSele
     }
   }, [item, lastItem, remItems, lastItemId]);
 
-  const checkOpenForParent = (child, id) => {
+  const checkOpenForParent = (child: any[], id: string) => {
     child.forEach((ele) => {
       if (ele.children?.length) {
         checkOpenForParent(ele.children, currentItem.id);
@@ -71,9 +78,9 @@ export default function NavGroup({ item, lastItem, remItems, lastItemId, setSele
     });
   };
 
-  const checkSelectedOnload = (data) => {
+  const checkSelectedOnload = (data: any) => {
     const childrens = data.children ? data.children : [];
-    childrens.forEach((itemCheck) => {
+    childrens.forEach((itemCheck: any) => {
       if (itemCheck?.children?.length) {
         checkOpenForParent(itemCheck.children, currentItem.id);
       }
@@ -95,7 +102,7 @@ export default function NavGroup({ item, lastItem, remItems, lastItemId, setSele
   }, [pathname, currentItem]);
 
   // menu list collapse & items
-  const items = currentItem.children?.map((menu) => {
+  const items = currentItem.children?.map((menu: any) => {
     switch (menu?.type) {
       case 'collapse':
         return <NavCollapse key={menu.id} menu={menu} level={1} parentId={currentItem.id} />;
@@ -136,12 +143,3 @@ export default function NavGroup({ item, lastItem, remItems, lastItemId, setSele
     </>
   );
 }
-
-NavGroup.propTypes = {
-  item: PropTypes.any,
-  lastItem: PropTypes.number,
-  remItems: PropTypes.array,
-  lastItemId: PropTypes.string,
-  selectedID: PropTypes.oneOfType([PropTypes.any, PropTypes.string]),
-  setSelectedID: PropTypes.oneOfType([PropTypes.any, PropTypes.func])
-};

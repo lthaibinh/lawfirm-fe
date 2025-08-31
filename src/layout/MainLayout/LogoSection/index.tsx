@@ -9,7 +9,7 @@ import Logo from '@/ui-component/Logo';
 
 // ==============================|| MAIN LOGO ||============================== //
 
-export default function LogoSection() {
+export default function LogoSection(): JSX.Element {
   return (
     <MuiLink component={Link} href={DASHBOARD_PATH} aria-label="theme-logo">
       <Logo />

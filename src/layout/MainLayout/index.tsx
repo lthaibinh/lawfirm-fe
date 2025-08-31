@@ -23,7 +23,7 @@ import { handlerDrawerOpen, useGetMenuMaster } from '@/api/menu';
 
 // ==============================|| MAIN LAYOUT ||============================== //
 
-export default function MainLayout() {
+export default function MainLayout(): JSX.Element {
   const theme = useTheme();
   const downMD = useMediaQuery(theme.breakpoints.down('md'));
 

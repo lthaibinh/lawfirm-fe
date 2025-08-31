@@ -1,6 +1,5 @@
 'use client';
 
-import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -22,7 +21,7 @@ import { handlerDrawerOpen, useGetMenuMaster } from '@/api/menu';
 import useConfig from '@/hooks/useConfig';
 
 // Helper function to match paths (replacement for react-router-dom's matchPath)
-const matchPath = ({ path, end = false }, currentPath) => {
+const matchPath = ({ path, end = false }: { path: string; end?: boolean }, currentPath: string): boolean => {
   if (!path) return false;
   const pathSegments = path.split('/').filter(Boolean);
   const currentSegments = currentPath.split('/').filter(Boolean);
@@ -40,10 +39,17 @@ const matchPath = ({ path, end = false }, currentPath) => {
 // assets
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
-export default function NavItem({ item, level, isParents = false, setSelectedID }) {
+interface NavItemProps {
+  item: any;
+  level: number;
+  isParents?: boolean;
+  setSelectedID?: () => void;
+}
+
+export default function NavItem({ item, level, isParents = false, setSelectedID }: NavItemProps): JSX.Element {
   const theme = useTheme();
   const downMD = useMediaQuery(theme.breakpoints.down('md'));
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   const pathname = usePathname();
   const { borderRadius } = useConfig();
@@ -53,7 +59,7 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
   const drawerOpen = menuMaster?.isDashboardDrawerOpened;
   const isSelected = !!matchPath({ path: item?.link ? item.link : item.url, end: false }, pathname);
 
-  const [hoverStatus, setHover] = useState(false);
+  const [hoverStatus, setHover] = useState<boolean>(false);
 
   const compareSize = () => {
     const compare = ref.current && ref.current.scrollWidth > ref.current.clientWidth;
@@ -73,7 +79,7 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
     <FiberManualRecordIcon sx={{ width: isSelected ? 8 : 6, height: isSelected ? 8 : 6 }} fontSize={level > 0 ? 'inherit' : 'medium'} />
   );
 
-  const itemHandler = (item) => {
+  const itemHandler = (item: any) => {
     if (downMD) handlerDrawerOpen(false);
 
     if (isParents && setSelectedID) {
@@ -203,5 +209,3 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
     </>
   );
 }
-
-NavItem.propTypes = { item: PropTypes.any, level: PropTypes.number, isParents: PropTypes.bool, setSelectedID: PropTypes.func };
