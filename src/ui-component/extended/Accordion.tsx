@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
@@ -12,7 +13,24 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 // ==============================|| ACCORDION ||============================== //
 
-export default function Accordion({ data, defaultExpandedId = null, expandIcon, square, toggle }) {
+interface AccordionItem {
+  id: string | number;
+  title: React.ReactNode;
+  content: React.ReactNode;
+  disabled?: boolean;
+  defaultExpand?: boolean;
+  expanded?: boolean;
+}
+
+interface AccordionProps {
+  data: AccordionItem[];
+  defaultExpandedId?: string | number | null;
+  expandIcon?: React.ReactNode | false;
+  square?: boolean;
+  toggle?: boolean;
+}
+
+export default function Accordion({ data, defaultExpandedId = null, expandIcon, square, toggle }: AccordionProps) {
   const [expanded, setExpanded] = useState(null);
   const handleChange = (panel) => (event, newExpanded) => {
     toggle && setExpanded(newExpanded ? panel : false);

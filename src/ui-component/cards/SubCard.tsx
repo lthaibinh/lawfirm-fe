@@ -1,3 +1,5 @@
+import React, { forwardRef } from 'react';
+
 // material-ui
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -8,7 +10,22 @@ import Typography from '@mui/material/Typography';
 
 // ==============================|| CUSTOM SUB CARD ||============================== //
 
-const SubCard = ({
+interface SubCardProps {
+  children?: React.ReactNode;
+  className?: string;
+  content?: boolean;
+  contentClass?: string;
+  darkTitle?: boolean;
+  secondary?: React.ReactNode;
+  sx?: object;
+  contentSX?: object;
+  footerSX?: object;
+  title?: string;
+  actions?: React.ReactNode;
+  [key: string]: any;
+}
+
+const SubCard = forwardRef<HTMLDivElement, SubCardProps>(({
   children,
   className,
   content = true,
@@ -20,9 +37,8 @@ const SubCard = ({
   footerSX = {},
   title,
   actions,
-  ref,
   ...others
-}) => {
+}, ref) => {
   const defaultShadow = '0 2px 14px 0 rgb(32 40 45 / 8%)';
 
   return (
@@ -48,5 +64,5 @@ const SubCard = ({
       {actions && <CardActions sx={{ p: 2.5, ...footerSX }}>{actions}</CardActions>}
     </Card>
   );
-};
+});
 export default SubCard;

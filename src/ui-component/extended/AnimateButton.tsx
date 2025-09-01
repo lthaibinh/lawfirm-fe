@@ -1,13 +1,28 @@
-import PropTypes from 'prop-types';
+import React, { forwardRef } from 'react';
 
 // third party
 import { motion, useCycle } from 'framer-motion';
 
 // ==============================|| ANIMATION BUTTON ||============================== //
 
-function AnimateButton({ children, type = 'scale', direction = 'right', offset = 10, scale = { hover: 1, tap: 0.9 }, ref }) {
-  let offset1;
-  let offset2;
+interface AnimateButtonProps {
+  children: React.ReactNode;
+  type?: 'slide' | 'scale' | 'rotate';
+  direction?: 'up' | 'down' | 'left' | 'right';
+  offset?: number;
+  scale?: { hover: number; tap: number } | number;
+}
+
+const AnimateButton = forwardRef<HTMLDivElement, AnimateButtonProps>(function AnimateButton({ 
+  children, 
+  type = 'scale', 
+  direction = 'right', 
+  offset = 10, 
+  scale = { hover: 1, tap: 0.9 } 
+}, ref) {
+  let offset1: number;
+  let offset2: number;
+  
   switch (direction) {
     case 'up':
     case 'left':
@@ -25,6 +40,11 @@ function AnimateButton({ children, type = 'scale', direction = 'right', offset =
   const [x, cycleX] = useCycle(offset1, offset2);
   const [y, cycleY] = useCycle(offset1, offset2);
 
+  // Normalize scale to object format
+  const normalizedScale = typeof scale === 'number' 
+    ? { hover: scale, tap: scale }
+    : scale;
+
   switch (type) {
     case 'rotate':
       return (
@@ -41,42 +61,43 @@ function AnimateButton({ children, type = 'scale', direction = 'right', offset =
           {children}
         </motion.div>
       );
+      
     case 'slide':
       if (direction === 'up' || direction === 'down') {
         return (
-          <motion.div ref={ref} animate={{ y: y !== undefined ? y : '' }} onHoverEnd={() => cycleY()} onHoverStart={() => cycleY()}>
+          <motion.div 
+            ref={ref} 
+            animate={{ y: y }} 
+            onHoverEnd={() => cycleY()} 
+            onHoverStart={() => cycleY()}
+          >
             {children}
           </motion.div>
         );
       }
       return (
-        <motion.div ref={ref} animate={{ x: x !== undefined ? x : '' }} onHoverEnd={() => cycleX()} onHoverStart={() => cycleX()}>
+        <motion.div 
+          ref={ref} 
+          animate={{ x: x }} 
+          onHoverEnd={() => cycleX()} 
+          onHoverStart={() => cycleX()}
+        >
           {children}
         </motion.div>
       );
 
     case 'scale':
     default:
-      if (typeof scale === 'number') {
-        scale = {
-          hover: scale,
-          tap: scale
-        };
-      }
       return (
-        <motion.div ref={ref} whileHover={{ scale: scale?.hover }} whileTap={{ scale: scale?.tap }}>
+        <motion.div 
+          ref={ref} 
+          whileHover={{ scale: normalizedScale.hover }} 
+          whileTap={{ scale: normalizedScale.tap }}
+        >
           {children}
         </motion.div>
       );
   }
-}
+});
 
 export default AnimateButton;
-
-AnimateButton.propTypes = {
-  children: PropTypes.node,
-  type: PropTypes.oneOf(['slide', 'scale', 'rotate']),
-  direction: PropTypes.oneOf(['up', 'down', 'left', 'right']),
-  offset: PropTypes.number,
-  scale: PropTypes.object
-};

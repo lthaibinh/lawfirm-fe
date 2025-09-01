@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -25,7 +26,11 @@ import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 
 // ==============================|| BREADCRUMBS TITLE ||============================== //
 
-function BTitle({ title }) {
+interface BTitleProps {
+  title: string;
+}
+
+function BTitle({ title }: BTitleProps) {
   return (
     <Grid>
       <Typography variant="h4" sx={{ fontWeight: 500 }}>
@@ -33,6 +38,23 @@ function BTitle({ title }) {
       </Typography>
     </Grid>
   );
+}
+
+interface BreadcrumbsProps {
+  card?: boolean;
+  custom?: boolean;
+  divider?: boolean;
+  heading?: string;
+  icon?: boolean;
+  icons?: boolean;
+  links?: Array<{ title: string; to?: string; icon?: React.ComponentType<any> }>;
+  maxItems?: number;
+  rightAlign?: boolean;
+  separator?: React.ComponentType<any>;
+  title?: boolean;
+  titleBottom?: boolean;
+  sx?: object;
+  [key: string]: any;
 }
 
 export default function Breadcrumbs({
@@ -50,7 +72,7 @@ export default function Breadcrumbs({
   titleBottom,
   sx,
   ...others
-}) {
+}: BreadcrumbsProps) {
   const theme = useTheme();
   const pathname = usePathname();
   const [main, setMain] = useState();

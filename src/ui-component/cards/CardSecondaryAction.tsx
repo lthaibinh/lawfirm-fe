@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 
 // material-ui
@@ -9,14 +10,31 @@ import Tooltip from '@mui/material/Tooltip';
 // project imports
 import Avatar from '../extended/Avatar';
 
-export default function CardSecondaryAction({ title, link, icon }) {
+interface CardSecondaryActionProps {
+  title?: string;
+  link: string;
+  icon?: React.ReactNode;
+}
+
+export default function CardSecondaryAction({ title, link, icon }: CardSecondaryActionProps) {
   const theme = useTheme();
 
   return (
     <Tooltip title={title || 'Reference'} placement="left">
       <ButtonBase disableRipple>
         {!icon && (
-          <Avatar component={Link} href={link} aria-label="redirect pages" target="_blank" alt="MUI Logo" size="badge" outline>
+          <Avatar 
+            component={Link} 
+            href={link} 
+            aria-label="redirect pages" 
+            target="_blank" 
+            alt="MUI Logo" 
+            size="badge" 
+            outline 
+            className=""
+            color="primary"
+            sx={{}}
+          >
             <svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clipPath="url(#clip0)">
                 <path d="M100 260.9V131L212.5 195.95V239.25L137.5 195.95V282.55L100 260.9Z" fill={theme.palette.primary[800]} />
@@ -39,7 +57,17 @@ export default function CardSecondaryAction({ title, link, icon }) {
           </Avatar>
         )}
         {icon && (
-          <Avatar component={Link} href={link} target="_blank" size="badge" color="primary" outline aria-label="material-ui">
+          <Avatar 
+            component={Link} 
+            href={link} 
+            target="_blank" 
+            size="badge" 
+            color="primary" 
+            outline 
+            aria-label="material-ui"
+            className=""
+            sx={{}}
+          >
             {icon}
           </Avatar>
         )}

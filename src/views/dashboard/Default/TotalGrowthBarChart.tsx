@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
@@ -32,7 +33,11 @@ const series = [
   { name: 'Maintenance', data: [0, 0, 75, 0, 0, 115, 0, 0, 0, 0, 150, 0] }
 ];
 
-export default function TotalGrowthBarChart({ isLoading }) {
+interface TotalGrowthBarChartProps {
+  isLoading: boolean;
+}
+
+export default function TotalGrowthBarChart({ isLoading }: TotalGrowthBarChartProps) {
   const theme = useTheme();
 
   const [value, setValue] = useState('today');

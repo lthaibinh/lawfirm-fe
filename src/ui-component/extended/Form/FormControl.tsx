@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 // material-ui
 import Divider from '@mui/material/Divider';
@@ -6,7 +7,17 @@ import InputLabel from '@mui/material/InputLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import MUIFormControl from '@mui/material/FormControl';
 
-export default function FormControl({ captionLabel, formState, iconPrimary, iconSecondary, placeholder, textPrimary, textSecondary }) {
+interface FormControlProps {
+  captionLabel?: string;
+  formState?: string;
+  iconPrimary?: React.ComponentType<any>;
+  iconSecondary?: React.ComponentType<any>;
+  placeholder?: string;
+  textPrimary?: string;
+  textSecondary?: string;
+}
+
+export default function FormControl({ captionLabel, formState, iconPrimary, iconSecondary, placeholder, textPrimary, textSecondary }: FormControlProps) {
   const IconPrimary = iconPrimary;
   const primaryIcon = iconPrimary ? <IconPrimary fontSize="small" sx={{ color: 'grey.700' }} /> : null;
 

@@ -1,3 +1,5 @@
+import React, { forwardRef } from 'react';
+
 // material-ui
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -10,7 +12,23 @@ const headerStyle = {
   '& .MuiCardHeader-action': { mr: 0 }
 };
 
-const MainCard = function MainCard({
+interface MainCardProps {
+  border?: boolean;
+  boxShadow?: boolean;
+  children?: React.ReactNode;
+  content?: boolean;
+  contentClass?: string;
+  contentSX?: object;
+  headerSX?: object;
+  darkTitle?: boolean;
+  secondary?: React.ReactNode;
+  shadow?: string;
+  sx?: object;
+  title?: string;
+  [key: string]: any; // for other props
+}
+
+const MainCard = forwardRef<HTMLDivElement, MainCardProps>(function MainCard({
   border = false,
   boxShadow,
   children,
@@ -23,9 +41,8 @@ const MainCard = function MainCard({
   shadow,
   sx = {},
   title,
-  ref,
   ...others
-}) {
+}, ref) {
   const defaultShadow = '0 2px 14px 0 rgb(32 40 45 / 8%)';
 
   return (
@@ -59,6 +76,6 @@ const MainCard = function MainCard({
       {!content && children}
     </Card>
   );
-};
+});
 
 export default MainCard;

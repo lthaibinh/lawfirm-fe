@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -13,7 +14,11 @@ import { gridSpacing } from '@/store/constant';
 
 // ===============================|| SHADOW BOX ||=============================== //
 
-function ShadowBox({ shadow }) {
+interface ShadowBoxProps {
+  shadow: string;
+}
+
+function ShadowBox({ shadow }: ShadowBoxProps) {
   return (
     <Card sx={{ mb: 3, boxShadow: shadow }}>
       <Box
@@ -34,7 +39,13 @@ function ShadowBox({ shadow }) {
 
 // ===============================|| SHADOW BOX ||=============================== //
 
-function CustomShadowBox({ shadow, label, color }) {
+interface CustomShadowBoxProps {
+  shadow: string;
+  label?: string;
+  color: string;
+}
+
+function CustomShadowBox({ shadow, label, color }: CustomShadowBoxProps) {
   return (
     <Card sx={{ mb: 3, boxShadow: shadow }}>
       <Box

@@ -1,6 +1,7 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { cloneElement, useState } from 'react';
-import Link from 'next/link';
+// import Link from 'next/link';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -27,7 +28,12 @@ import Logo from '@/ui-component/Logo';
 import { IconBook, IconCreditCard, IconDashboard, IconHome2 } from '@tabler/icons-react';
 import MenuIcon from '@mui/icons-material/Menu';
 
-function ElevationScroll({ children, window }) {
+interface ElevationScrollProps {
+  children: React.ReactElement;
+  window?: () => Window;
+}
+
+function ElevationScroll({ children, window }: ElevationScrollProps) {
   const theme = useTheme();
   const trigger = useScrollTrigger({
     disableHysteresis: true,
@@ -46,7 +52,11 @@ function ElevationScroll({ children, window }) {
 
 // ==============================|| MINIMAL LAYOUT APP BAR ||============================== //
 
-export default function AppBar({ ...others }) {
+interface AppBarProps {
+  [key: string]: any;
+}
+
+export default function AppBar({ ...others }: AppBarProps) {
   const [drawerToggle, setDrawerToggle] = useState(false);
 
   const drawerToggler = (open) => (event) => {

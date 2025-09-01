@@ -1,9 +1,14 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 
 // ==============================|| NAVIGATION SCROLL TO TOP ||============================== //
 
-export default function NavigationScroll({ children }) {
+interface NavigationScrollProps {
+  children: React.ReactNode;
+}
+
+export default function NavigationScroll({ children }: NavigationScrollProps) {
   useEffect(() => {
     window.scrollTo({
       top: 0,

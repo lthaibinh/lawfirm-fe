@@ -1,3 +1,4 @@
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 // material-ui
@@ -8,7 +9,23 @@ import Slide from '@mui/material/Slide';
 import Zoom from '@mui/material/Zoom';
 import Box from '@mui/material/Box';
 
-function Transitions({ children, position = 'top-left', sx, type = 'grow', direction = 'up', ref, ...others }) {
+interface TransitionsProps {
+  children: React.ReactNode;
+  position?: 'top-left' | 'top-right' | 'top' | 'bottom-left' | 'bottom-right' | 'bottom';
+  sx?: object;
+  type?: 'grow' | 'collapse' | 'fade' | 'slide' | 'zoom';
+  direction?: 'up' | 'right' | 'left' | 'down';
+  [key: string]: any;
+}
+
+const Transitions = forwardRef<HTMLDivElement, TransitionsProps>(function Transitions({ 
+  children, 
+  position = 'top-left', 
+  sx, 
+  type = 'grow', 
+  direction = 'up', 
+  ...others 
+}, ref) {
   let positionSX = {
     transformOrigin: '0 0 0'
   };
@@ -91,15 +108,6 @@ function Transitions({ children, position = 'top-left', sx, type = 'grow', direc
       )}
     </Box>
   );
-}
+})
 
 export default Transitions;
-
-Transitions.propTypes = {
-  children: PropTypes.node,
-  position: PropTypes.string,
-  sx: PropTypes.any,
-  type: PropTypes.string,
-  direction: PropTypes.oneOf(['up', 'right', 'left', 'down']),
-  others: PropTypes.any
-};

@@ -1,9 +1,19 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 
 // material-ui
 import MuiAvatar from '@mui/material/Avatar';
 
-export default function Avatar({ className, color, outline, size, sx, ...others }) {
+interface AvatarProps {
+  className?: string;
+  color?: string;
+  outline?: boolean;
+  size?: 'badge' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  sx?: object;
+  [key: string]: any;
+}
+
+export default function Avatar({ className, color, outline, size, sx, ...others }: AvatarProps) {
   const colorSX = color && !outline && { color: 'background.paper', bgcolor: `${color}.main` };
   const outlineSX = outline && {
     color: color ? `${color}.main` : `primary.main`,

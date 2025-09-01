@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 // material-ui
 import { experimentalStyled as styled } from '@mui/material/styles';
@@ -11,7 +12,13 @@ const BInputLabel = styled((props) => <MuiInputLabel {...props} />, {
   marginBottom: horizontal ? 0 : 8
 }));
 
-export default function InputLabel({ children, horizontal = false, ...others }) {
+interface InputLabelProps {
+  children: React.ReactNode;
+  horizontal?: boolean;
+  [key: string]: any;
+}
+
+export default function InputLabel({ children, horizontal = false, ...others }: InputLabelProps) {
   return (
     <BInputLabel horizontal={horizontal} {...others}>
       {children}

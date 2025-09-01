@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -22,7 +22,11 @@ import SkeletonTotalOrderCard from '@/ui-component/cards/Skeleton/EarningCard';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
-export default function TotalOrderLineChartCard({ isLoading }) {
+interface TotalOrderLineChartCardProps {
+  isLoading: boolean;
+}
+
+export default function TotalOrderLineChartCard({ isLoading }: TotalOrderLineChartCardProps) {
   const theme = useTheme();
 
   const [timeValue, setTimeValue] = React.useState(false);

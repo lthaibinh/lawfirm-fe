@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 // material-ui
 import Box from '@mui/material/Box';
@@ -7,7 +8,12 @@ import MainCard from '@/ui-component/cards/MainCard';
 
 // ==============================|| AUTHENTICATION CARD WRAPPER ||============================== //
 
-export default function AuthCardWrapper({ children, ...other }) {
+interface AuthCardWrapperProps {
+  children: React.ReactNode;
+  [key: string]: any;
+}
+
+export default function AuthCardWrapper({ children, ...other }: AuthCardWrapperProps) {
   return (
     <MainCard
       sx={{

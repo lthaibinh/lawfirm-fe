@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 
 // material-ui
@@ -40,7 +41,14 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
   }
 }));
 
-export default function TotalIncomeLightCard({ isLoading, total, icon, label }) {
+interface TotalIncomeLightCardProps {
+  isLoading: boolean;
+  total: number;
+  icon: React.ReactNode;
+  label: string;
+}
+
+export default function TotalIncomeLightCard({ isLoading, total, icon, label }: TotalIncomeLightCardProps) {
   const theme = useTheme();
 
   return (

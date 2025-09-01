@@ -25,7 +25,11 @@ import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined';
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 
-export default function PopularCard({ isLoading }) {
+interface PopularCardProps {
+  isLoading: boolean;
+}
+
+export default function PopularCard({ isLoading }: PopularCardProps) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {

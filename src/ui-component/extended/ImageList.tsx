@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 // material-ui
 import CardMedia from '@mui/material/CardMedia';
@@ -11,12 +12,22 @@ import useConfig from '@/hooks/useConfig';
 import { getImageUrl, ImagePath } from 'utils/getImageUrl';
 
 // set image width & height radio
-function srcset(image, width, height, rows = 1, cols = 1) {
+function srcset(image: string, width: number, height: number, rows = 1, cols = 1) {
   return `${image}?w=${width * cols}&h=${height * rows}&fit=crop&auto=format 1x,
   ${image}?w=${width * cols}&h=${height * rows}&fit=crop&auto=format&dpr=2 2x`;
 }
 
-export default function ImageList({ itemData }) {
+interface ImageItem {
+  img: string;
+  title: string;
+  featured?: boolean;
+}
+
+interface ImageListProps {
+  itemData: ImageItem[];
+}
+
+export default function ImageList({ itemData }: ImageListProps) {
   const { borderRadius } = useConfig();
 
   return (

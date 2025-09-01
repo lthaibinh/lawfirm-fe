@@ -24,7 +24,11 @@ import FileCopyTwoToneIcon from '@mui/icons-material/FileCopyOutlined';
 import PictureAsPdfTwoToneIcon from '@mui/icons-material/PictureAsPdfOutlined';
 import ArchiveTwoToneIcon from '@mui/icons-material/ArchiveOutlined';
 
-export default function EarningCard({ isLoading }) {
+interface EarningCardProps {
+  isLoading: boolean;
+}
+
+export default function EarningCard({ isLoading }: EarningCardProps) {
   const theme = useTheme();
 
   const [anchorEl, setAnchorEl] = React.useState(null);

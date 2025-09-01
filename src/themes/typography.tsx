@@ -60,7 +60,7 @@ export default function Typography(theme: Theme, borderRadius: number, fontFamil
       color: theme.palette.text.primary
     },
     button: {
-      textTransform: 'capitalize'
+      textTransform: 'capitalize' as const
     },
     customInput: {
       marginTop: 1,
@@ -98,14 +98,14 @@ export default function Typography(theme: Theme, borderRadius: number, fontFamil
       fontWeight: 500,
       color: theme.palette.grey[900],
       padding: '6px',
-      textTransform: 'capitalize',
+      textTransform: 'capitalize' as const,
       marginTop: '10px'
     },
     subMenuCaption: {
       fontSize: '0.6875rem',
       fontWeight: 500,
       color: theme.palette.text.secondary,
-      textTransform: 'capitalize'
+      textTransform: 'capitalize' as const
     },
     commonAvatar: {
       cursor: 'pointer',
