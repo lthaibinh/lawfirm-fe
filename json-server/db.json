@@ -1,0 +1,175 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Getting Started with Next.js 155",
+      "content": "Next.js 14 introduces many new features including the App Router, Server Components, and improved performance...",
+      "excerpt": "Learn about the latest features in Next.js 14 and how to get started with modern web development.",
+      "author": "John Doe",
+      "publishedAt": "2024-01-15T10:00:00Z",
+      "tags": ["nextjs", "react", "web-development"],
+      "slug": "getting-started-with-nextjs-14",
+      "featuredImage": "/image/nextjs-banner.jpg",
+      "status": "published",
+      "viewCount": 1250,
+      "meta": {
+        "title": "Getting Started with Next.js 14 - Complete Guide",
+        "description": "Comprehensive guide to Next.js 14 features and getting started",
+        "keywords": "nextjs, react, web development, tutorial"
+      }
+    },
+    {
+      "id": 2,
+      "title": "Building Modern UIs with Material-UI",
+      "content": "Material-UI provides a comprehensive set of React components that implement Google's Material Design...",
+      "excerpt": "Explore how to build beautiful and responsive user interfaces using Material-UI components.",
+      "author": "Jane Smith",
+      "publishedAt": "2024-01-20T14:30:00Z",
+      "tags": ["material-ui", "react", "ui-design"],
+      "slug": "building-modern-uis-with-material-ui",
+      "featuredImage": "/image/material-ui-banner.jpg",
+      "status": "published",
+      "viewCount": 890,
+      "meta": {
+        "title": "Building Modern UIs with Material-UI - Best Practices",
+        "description": "Learn how to create stunning user interfaces with Material-UI",
+        "keywords": "material-ui, react, ui design, components"
+      }
+    },
+    {
+      "id": 3,
+      "title": "Advanced TypeScript Patterns",
+      "content": "TypeScript offers powerful type system features that can significantly improve code quality and developer experience...",
+      "excerpt": "Discover advanced TypeScript patterns and techniques for better code organization.",
+      "author": "Mike Johnson",
+      "publishedAt": "2024-01-25T09:15:00Z",
+      "tags": ["typescript", "programming", "best-practices"],
+      "slug": "advanced-typescript-patterns",
+      "featuredImage": "/image/typescript-banner.jpg",
+      "status": "published",
+      "viewCount": 2100,
+      "meta": {
+        "title": "Advanced TypeScript Patterns - Expert Guide",
+        "description": "Master advanced TypeScript patterns for better code quality",
+        "keywords": "typescript, programming, patterns, best practices"
+      }
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "postId": 1,
+      "parentId": null,
+      "author": "Alice Brown",
+      "email": "alice@example.com",
+      "content": "Great article! The App Router explanation was very clear.",
+      "createdAt": "2024-01-16T11:00:00Z",
+      "status": "approved"
+    },
+    {
+      "id": 2,
+      "postId": 1,
+      "parentId": 1,
+      "author": "John Doe",
+      "email": "john@example.com",
+      "content": "Thanks Alice! I'm glad you found it helpful.",
+      "createdAt": "2024-01-16T12:00:00Z",
+      "status": "approved"
+    },
+    {
+      "id": 3,
+      "postId": 2,
+      "parentId": null,
+      "author": "Bob Wilson",
+      "email": "bob@example.com",
+      "content": "Material-UI has been a game-changer for our project. Great tips!",
+      "createdAt": "2024-01-21T15:00:00Z",
+      "status": "approved"
+    }
+  ],
+  "meta": [
+    {
+      "id": 1,
+      "type": "category",
+      "name": "Web Development",
+      "slug": "web-development",
+      "description": "Articles about modern web development technologies and practices"
+    },
+    {
+      "id": 2,
+      "type": "category",
+      "name": "React",
+      "slug": "react",
+      "description": "React.js tutorials, tips, and best practices"
+    },
+    {
+      "id": 3,
+      "type": "tag",
+      "name": "nextjs",
+      "slug": "nextjs",
+      "description": "Next.js framework related content"
+    },
+    {
+      "id": 4,
+      "type": "tag",
+      "name": "typescript",
+      "slug": "typescript",
+      "description": "TypeScript programming language content"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "role": "admin",
+      "avatar": "/image/users/john-doe.jpg",
+      "createdAt": "2024-01-01T00:00:00Z"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane@example.com",
+      "role": "editor",
+      "avatar": "/image/users/jane-smith.jpg",
+      "createdAt": "2024-01-02T00:00:00Z"
+    },
+    {
+      "id": 3,
+      "name": "Mike Johnson",
+      "email": "mike@example.com",
+      "role": "author",
+      "avatar": "/image/users/mike-johnson.jpg",
+      "createdAt": "2024-01-03T00:00:00Z"
+    }
+  ],
+  "dashboard": {
+    "stats": {
+      "totalPosts": 3,
+      "totalComments": 3,
+      "totalUsers": 3,
+      "totalViews": 4240
+    },
+    "recentActivity": [
+      {
+        "id": 1,
+        "type": "post_created",
+        "title": "Advanced TypeScript Patterns",
+        "timestamp": "2024-01-25T09:15:00Z"
+      },
+      {
+        "id": 2,
+        "type": "comment_approved",
+        "title": "Comment on 'Building Modern UIs with Material-UI'",
+        "timestamp": "2024-01-21T15:00:00Z"
+      }
+    ]
+  },
+  "menu": {
+    "openedItem": "dashboard",
+    "openedComponent": "buttons",
+    "openedHorizontalItem": null,
+    "isDashboardDrawerOpened": false,
+    "isComponentDrawerOpened": true
+  }
+}

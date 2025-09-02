@@ -1,0 +1,10 @@
+{
+  "/api/post/posts": "/posts",
+  "/api/post/posts/:id": "/posts/:id",
+  "/api/post/meta": "/meta",
+  "/api/post/comments/:postId": "/comments?postId=:postId",
+  "/api/post/comments/:postId/:parentId": "/comments?postId=:postId&parentId=:parentId",
+  "/api/menu/master": "/menu",
+  "/api/dashboard": "/dashboard",
+  "/api/users": "/users"
+}

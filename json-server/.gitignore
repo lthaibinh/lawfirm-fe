@@ -1,0 +1,21 @@
+# JSON Server temporary files
+*.tmp
+*.log
+*.pid
+
+# Database backups (if any)
+*.backup
+*.bak
+
+# Environment files (keep example, ignore local)
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Node modules (if any local dependencies)
+node_modules/
+
+# OS generated files
+.DS_Store
+Thumbs.db
