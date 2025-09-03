@@ -2,6 +2,10 @@
 
 This project includes a mock API server using JSON Server to simulate backend endpoints during development.
 
+> **Important**: JSON Server uses **1-based pagination**. Page 1 is the first page, page 0 will return no results.
+
+> **Note**: The `accountServices` automatically converts 0-based page numbers (from your component) to 1-based page numbers (for JSON Server), so you can continue using 0-based indexing in your UI components.
+
 > **Note**: All json-server related files are now organized in the `json-server/` folder for better project structure.
 
 ## Setup
@@ -77,6 +81,24 @@ The mock API provides the following endpoints that match your existing API struc
 - `PUT /api/users/:id` - Update user
 - `DELETE /api/users/:id` - Delete user
 
+### Accounts
+- `GET /api/accounts` - Get all accounts with pagination and filtering
+- `GET /api/accounts/:id` - Get specific account by ID
+- `POST /api/accounts` - Create new account
+- `PUT /api/accounts/:id` - Update existing account
+- `DELETE /api/accounts/:id` - Delete account
+
+
+#### Account Query Parameters (JSON Server Native)
+- `_page` - Page number for pagination (JSON Server native)
+- `_limit` - Number of items per page (JSON Server native)
+- `q` - Search term for text search across all fields (JSON Server native)
+- `status` - Filter by account status (active, inactive, pending, suspended)
+- `accountType` - Filter by account type (individual, corporate, startup, trust, partnership)
+- `assignedAttorney` - Filter by assigned attorney
+- `_sort` - Sort field (accountName, clientName, createdAt, balance, etc.) (JSON Server native)
+- `_order` - Sort direction (asc, desc) (JSON Server native)
+
 ## Data Structure
 
 The mock data is stored in `db.json` and includes:
@@ -85,6 +107,13 @@ The mock data is stored in `db.json` and includes:
 - **Comments**: Nested comment structure with post relationships
 - **Meta**: Categories and tags for content organization
 - **Users**: Sample user accounts with roles
+- **Accounts**: Sample client accounts with comprehensive information including:
+  - Account details (number, name, client info)
+  - Contact information (email, phone)
+  - Financial data (balance, currency)
+  - Status and type classification
+  - Assignment and activity tracking
+  - Billing address and notes
 - **Dashboard**: Statistics and recent activity data
 - **Menu**: Current navigation state
 
@@ -101,6 +130,13 @@ The API uses custom routing to match your existing endpoint structure.
 
 ### Real-time Updates
 When running with `--watch` flag, the API automatically reloads when `db.json` changes.
+
+### JSON Server Native Features
+The accounts endpoint uses JSON Server's built-in features:
+- **Pagination**: `_page` and `_limit` parameters
+- **Search**: `q` parameter for text search across all fields
+- **Filtering**: Direct field filtering (status, accountType, assignedAttorney)
+- **Sorting**: `_sort` and `_order` parameters
 
 ## Development Workflow
 

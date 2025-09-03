@@ -6,5 +6,7 @@
   "/api/post/comments/:postId/:parentId": "/comments?postId=:postId&parentId=:parentId",
   "/api/menu/master": "/menu",
   "/api/dashboard": "/dashboard",
-  "/api/users": "/users"
+  "/api/users": "/users",
+  "/api/accounts": "/accounts",
+  "/api/accounts/:id": "/accounts/:id"
 }

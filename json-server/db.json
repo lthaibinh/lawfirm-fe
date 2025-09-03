@@ -55,6 +55,123 @@
       }
     }
   ],
+  "accounts": [
+    {
+      "id": 1,
+      "accountNumber": "ACC001",
+      "accountName": "Smith & Associates Law Firm",
+      "clientName": "John Smith",
+      "email": "john.smith@smithlaw.com",
+      "phone": "+1-555-0123",
+      "status": "active",
+      "accountType": "corporate",
+      "balance": 25000.00,
+      "currency": "USD",
+      "createdAt": "2024-01-15T00:00:00Z",
+      "lastActivity": "2024-01-25T14:30:00Z",
+      "assignedAttorney": "Sarah Johnson",
+      "billingAddress": {
+        "street": "123 Legal Street",
+        "city": "New York",
+        "state": "NY",
+        "zipCode": "10001",
+        "country": "USA"
+      },
+      "notes": "Corporate client with ongoing litigation case"
+    },
+    {
+      "id": 2,
+      "accountNumber": "ACC002",
+      "accountName": "Williams Family Trust",
+      "clientName": "Mary Williams",
+      "email": "mary.williams@email.com",
+      "phone": "+1-555-0124",
+      "status": "active",
+      "accountType": "individual",
+      "balance": 15000.00,
+      "currency": "USD",
+      "createdAt": "2024-01-20T00:00:00Z",
+      "lastActivity": "2024-01-24T09:15:00Z",
+      "assignedAttorney": "Michael Chen",
+      "billingAddress": {
+        "street": "456 Trust Avenue",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zipCode": "90210",
+        "country": "USA"
+      },
+      "notes": "Estate planning and trust administration"
+    },
+    {
+      "id": 3,
+      "accountNumber": "ACC003",
+      "accountName": "TechStart Inc.",
+      "clientName": "David Rodriguez",
+      "email": "david.rodriguez@techstart.com",
+      "phone": "+1-555-0125",
+      "status": "pending",
+      "accountType": "startup",
+      "balance": 5000.00,
+      "currency": "USD",
+      "createdAt": "2024-01-22T00:00:00Z",
+      "lastActivity": "2024-01-23T16:45:00Z",
+      "assignedAttorney": "Emily Davis",
+      "billingAddress": {
+        "street": "789 Innovation Drive",
+        "city": "San Francisco",
+        "state": "CA",
+        "zipCode": "94105",
+        "country": "USA"
+      },
+      "notes": "New startup client, needs incorporation services"
+    },
+    {
+      "id": 4,
+      "accountNumber": "ACC004",
+      "accountName": "Green Energy Solutions",
+      "clientName": "Lisa Thompson",
+      "email": "lisa.thompson@greenenergy.com",
+      "phone": "+1-555-0126",
+      "status": "active",
+      "accountType": "corporate",
+      "balance": 75000.00,
+      "currency": "USD",
+      "createdAt": "2024-01-10T00:00:00Z",
+      "lastActivity": "2024-01-26T11:20:00Z",
+      "assignedAttorney": "Robert Wilson",
+      "billingAddress": {
+        "street": "321 Renewable Way",
+        "city": "Austin",
+        "state": "TX",
+        "zipCode": "73301",
+        "country": "USA"
+      },
+      "notes": "Large corporate client, environmental law focus"
+    },
+    {
+      "id": 5,
+      "accountNumber": "ACC005",
+      "accountName": "Anderson Real Estate",
+      "clientName": "James Anderson",
+      "email": "james.anderson@andersonre.com",
+      "phone": "+1-555-0127",
+      "status": "inactive",
+      "accountType": "corporate",
+      "balance": 0.00,
+      "currency": "USD",
+      "createdAt": "2023-12-01T00:00:00Z",
+      "lastActivity": "2023-12-15T13:00:00Z",
+      "assignedAttorney": "Jennifer Lee",
+      "billingAddress": {
+        "street": "654 Property Lane",
+        "city": "Miami",
+        "state": "FL",
+        "zipCode": "33101",
+        "country": "USA"
+      },
+      "notes": "Account closed, all matters resolved"
+    }
+  ],
   "comments": [
     {
       "id": 1,

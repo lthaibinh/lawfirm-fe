@@ -6,7 +6,7 @@ import { getSession } from "next-auth/react";
 
 // Create an Axios instance
 export const axiosInstance: AxiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL, // Set the base URL for your API
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3001/api', // Set the base URL for your API
 });
 
 // Add an interceptor to add the JWT token to every request
@@ -31,7 +31,7 @@ axiosInstance.interceptors.request.use(
 );
 axiosInstance.interceptors.response.use(
   (response) => {
-    return response.data?.data;
+    return response;
   },
   (error) => {
     // Transform the error to include a standardized message or format

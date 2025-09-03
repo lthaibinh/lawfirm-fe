@@ -16,3 +16,6 @@ export interface ICategory {
 
 // Export menu types
 export * from './menu';
+
+// Export account types
+export * from './account';
